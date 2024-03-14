@@ -13,20 +13,16 @@
         <table class="table border table-responsive table-hover">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">ID Transaksi</th>
-                    <th scope="col">ID User</th>
-                    <th scope="col">Tanggal Transaksi</th>
-                    <th scope="col">Status Pembayaran</th>
+                    <th scope="col">Jenis Transaksi</th>
+                    <th scope="col">Kategori Transaksi</th>
+                    <th scope="col">Kode Transaksi</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">1</th>
-                    <th>1</th>
-                    <td>1</td>
-                    <td>2024-03-15</td>
-                    <td>Lunas</td>
+                    <th>OVO</th>
+                    <td>Non-tunai</td>
+                    <td>217291</td>
                 </tr>
             </tbody>
         </table>

@@ -1,13 +1,13 @@
 <?php
 require_once "../app/core/Controller.php";
 
-class Transaction extends Controller
+class Payment_method extends Controller
 {
     public function index()
     {
-        $data["judul"] = "Transaction";
+        $data["judul"] = "Payment Method";
         $this->view("templates/header", $data);
-        $this->view("transaction/index", $data);
+        $this->view("payment_method/index", $data);
         $this->view("templates/footer", $data);
     }
 }
