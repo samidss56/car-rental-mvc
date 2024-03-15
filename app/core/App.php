@@ -2,7 +2,7 @@
 
 class App
 {
-    protected $controller = "Dashboard";
+    protected $controller = "Login";
     protected $method = "index";
     protected $params = [];
     public function __construct()

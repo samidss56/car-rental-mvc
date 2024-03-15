@@ -1,2 +1,2 @@
 <?php
-define("BASE_URL", "http://localhost/learn-mvc/public");
+define("BASE_URL", "http://localhost/car-rental-mvc/public");

@@ -4,12 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $data['judul']; ?></title>
+    <title>
+        <?= $data['judul']; ?>
+    </title>
 </head>
 
 <body>
     <div class="container">
-        <h1 class="my-4"><?= $data['judul']; ?></h1>
+        <h1 class="my-4">
+            <?= $data['judul']; ?>
+        </h1>
         <div class="card-wrapper d-flex gap-3">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
@@ -26,7 +30,9 @@
                 <div class="card-body">
                     <h5 class="card-title">Jumlah Mobil</h5>
                     <div class="d-flex justify-content-between">
-                        <h1 class="w-75">50</h1>
+                        <h1 class="w-75">
+                            <?= $data['jumlah_mobil'] ?>
+                        </h1>
                         <div class="d-flex align-items-center justify-content-center w-25">
                             <img src="<?= BASE_URL; ?>/img/car-front.svg" alt="">
                         </div>
@@ -47,7 +53,8 @@
             <div class="card bg-primary" style="width: 18rem;">
                 <div class="card-body d-flex flex-column gap-3">
                     <h5 class="card-title text-white">Buat Pesanan Disini</h5>
-                    <button class="btn btn-light fw-bolder" data-bs-toggle="modal" data-bs-target="#sewaModal">Buat Pesanan</button>
+                    <button class="btn btn-light fw-bolder" data-bs-toggle="modal" data-bs-target="#sewaModal">Buat
+                        Pesanan</button>
                 </div>
             </div>
         </div>
@@ -83,12 +90,14 @@
                         <div class="form-group my-2">
                             <label for="nama_mobil">Nama Mobil</label>
                             <select class="form-select" name="nama_mobil" id="nama_mobil">
-                                <option value="Toyota Avanza">Toyota Avanza</option>
-                                <option value="Honda Jazz">Honda Jazz</option>
-                                <option value="Mitsubishi Xpander">Mitsubishi Xpander</option>
-                                <option value="Toyota Yaris">Toyota Yaris</option>
+                                <?php foreach ($data['mobil'] as $mobil): ?>
+                                    <option value="  <?php echo $mobil['mobil_id'] ?>">
+                                        <?php echo $mobil['nama_mobil'] ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
+
                         <div class="form-group my-2">
                             <label for="jenis_mobil">Jenis Mobil</label>
                             <select class="form-select" name="jenis_mobil" id="jenis_mobil">
@@ -104,7 +113,8 @@
                         </div>
                         <div class="form-group my-2">
                             <label for="harga_sewa_per_hari">Harga Sewa / Hari</label>
-                            <input type="number" class="form-control" id="harga_sewa_per_hari" rows="5" name="harga_sewa_per_hari">
+                            <input type="number" class="form-control" id="harga_sewa_per_hari" rows="5"
+                                name="harga_sewa_per_hari">
                         </div>
                 </div>
                 <div class="modal-footer">
