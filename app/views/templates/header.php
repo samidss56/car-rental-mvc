@@ -21,9 +21,9 @@
                     <a class="nav-item nav-link active" href="<?= BASE_URL; ?>">Dashboard <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="<?= BASE_URL; ?>/cars">Cars</a>
                     <a class="nav-item nav-link" href="<?= BASE_URL; ?>/orders">Orders</a>
+                    <a class="nav-item nav-link" href="<?= BASE_URL; ?>/payment_method">Payment Method</a>
                     <a class="nav-item nav-link" href="<?= BASE_URL; ?>/history">History</a>
                     <a class="nav-item nav-link" href="<?= BASE_URL; ?>/users">Users</a>
-                    <a class="nav-item nav-link" href="<?= BASE_URL; ?>/payment_method">Payment Method</a>
                 </div>
             </div>
             <div class="d-flex">
