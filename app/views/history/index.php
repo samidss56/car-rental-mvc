@@ -9,25 +9,45 @@
 
 <body>
     <div class="container">
-        <h1 class="my-4"><?= $data['judul']; ?> Page</h1>
+        <h1 class="my-4">
+            <?= $data['judul']; ?> Page
+        </h1>
         <table class="table border table-responsive table-hover">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">ID Transaksi</th>
-                    <th scope="col">ID User</th>
-                    <th scope="col">Tanggal Transaksi</th>
-                    <th scope="col">Status Pembayaran</th>
+                    <th scope="col" class="text-center">No</th>
+                    <th scope="col" class="text-center">ID Transaksi</th>
+                    <th scope="col" class="text-center">ID User</th>
+                    <th scope="col" class="text-center">Tanggal Transaksi</th>
+                    <th scope="col" class="text-center">Status Pembayaran</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <th>1</th>
-                    <td>1</td>
-                    <td>2024-03-15</td>
-                    <td>Lunas</td>
-                </tr>
+            <tbody class="text-center">
+                <?php
+                $i = 1;
+                foreach ($data['history'] as $history) {
+                ?>
+                    <tr>
+                        <th scope="row">
+                            <?= $i ?>
+                        </th>
+                        <td>
+                            <?= $history['transaksi_id'] ?>
+                        </td>
+                        <td>
+                            <?= $history['user_id'] ?>
+                        </td>
+                        <td>
+                            <?= $history['tanggal_kembali'] ?>
+                        </td>
+                        <td>
+                            <?= $history['status_transaksi'] ?>
+                        </td>
+                    </tr>
+                <?php
+                    $i++;
+                }
+                ?>
             </tbody>
         </table>
     </div>
