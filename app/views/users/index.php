@@ -1,3 +1,20 @@
+<?php
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'sewa_mobile';
+
+$conn = new mysqli($host, $username, $password, $database);
+
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+$sql = "SELECT user_id, nama_user, alamat, nomor_telepon, email FROM master_user";
+$result = $conn->query($sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,19 +32,28 @@
                 <tr>
                     <th scope="col">ID User</th>
                     <th scope="col">Nama User</th>
-                    <th scope="col">Alamat User</th>
-                    <th scope="col">Nomor Telepon User</th>
-                    <th scope="col">Email User</th>
+                    <th scope="col">Alamat</th>
+                    <th scope="col">Nomor Telepon</th>
+                    <th scope="col">Email</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Djarot Subagyo</td>
-                    <td>Jl. Melati No. 456</td>
-                    <td>087654321098</td>
-                    <td>jane.smith@example.com</td>
-                </tr>
+                <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row['user_id'] . "</td>";
+                        echo "<td>" . $row['nama_user'] . "</td>";
+                        echo "<td>" . $row['alamat'] . "</td>";
+                        echo "<td>" . $row['nomor_telepon'] . "</td>";
+                        echo "<td>" . $row['email'] . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='5'>Tidak ada data</td></tr>";
+                }
+                $conn->close();
+                ?>
             </tbody>
         </table>
     </div>
