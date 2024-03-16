@@ -43,7 +43,9 @@
                 <div class="card-body">
                     <h5 class="card-title">Jumlah Pelanggan</h5>
                     <div class="d-flex justify-content-between">
-                        <h1 class="w-75">50</h1>
+                        <h1 class="w-75">
+                            <?= $data['jumlah_user'] ?>
+                        </h1>
                         <div class="d-flex align-items-center justify-content-center w-25">
                             <img src="<?= BASE_URL; ?>/img/people-fill.svg" alt="">
                         </div>
@@ -90,7 +92,7 @@
                         <div class="form-group my-2">
                             <label for="nama_mobil">Nama Mobil</label>
                             <select class="form-select" name="nama_mobil" id="nama_mobil">
-                                <?php foreach ($data['mobil'] as $mobil): ?>
+                                <?php foreach ($data['mobil'] as $mobil) : ?>
                                     <option value="  <?php echo $mobil['mobil_id'] ?>">
                                         <?php echo $mobil['nama_mobil'] ?>
                                     </option>
@@ -113,8 +115,7 @@
                         </div>
                         <div class="form-group my-2">
                             <label for="harga_sewa_per_hari">Harga Sewa / Hari</label>
-                            <input type="number" class="form-control" id="harga_sewa_per_hari" rows="5"
-                                name="harga_sewa_per_hari">
+                            <input type="number" class="form-control" id="harga_sewa_per_hari" rows="5" name="harga_sewa_per_hari">
                         </div>
                 </div>
                 <div class="modal-footer">

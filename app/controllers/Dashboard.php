@@ -7,6 +7,7 @@ class Dashboard extends Controller
     {
         $data["judul"] = "Dashboard";
         $data["jumlah_mobil"] = $this->model('Cars_model')->getNumberOfCars()['total_data'];
+        $data["jumlah_user"] = $this->model('Users_model')->getNumberOfUsers()["total_data"];
         $data['mobil'] = $this->model('Cars_model')->getNameOfCars();
 
 
