@@ -4,89 +4,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $data['judul']; ?></title>
+    <title>
+        <?= $data['judul']; ?>
+    </title>
 </head>
 
 <body>
     <div class="container">
-        <h1 class="my-4"><?= $data['judul']; ?> Page</h1>
-        <table class="table border table-responsive table-hover">
+        <h1 class="my-4">
+            <?= $data['judul']; ?> Page
+        </h1>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <?php Flasher::flash(); ?>
+            </div>
+        </div>
+
+        <table class="table border table-responsive table-hover table-striped">
             <thead>
                 <tr>
-                    <th scope="col">ID Pesanan</th>
-                    <th scope="col">ID User</th>
-                    <th scope="col">ID Mobil</th>
-                    <th scope="col">Tanggal Pemesanan</th>
-                    <th scope="col">Tanggal Kembali</th>
-                    <th scope="col">Total Harga</th>
-                    <th scope="col">Status Sewa</th>
-                    <th scope="col">Action</th>
+                    <th>ID Pesanan</th>
+                    <th>Nama User</th>
+                    <th>Mobil</th>
+                    <th>Tanggal Pemesanan</th>
+                    <th>Tanggal Kembali</th>
+                    <th>Total Harga</th>
+                    <th>Status Sewa</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>2024-03-05</td>
-                    <td>2024-03-06</td>
-                    <td>500.000</td>
-                    <td>Proses</td>
-                    <td><button href="" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editStatusModal">Edit</button></td>
-                </tr>
+                <?php foreach ($data['order'] as $pesanan) : ?>
+                    <tr class="align-middle text-start">
+                        <td>
+                            <?= $pesanan['pesanan_id'] ?>
+                        </td>
+                        <td>
+                            <?= $pesanan['nama_user'] ?>
+                        </td>
+                        <td>
+                            <img src="../app/assets/cars/<?= $pesanan['link_gambar_mobil'] ?>" alt="" width="160px" height="100px" class="object-fit-cover" title="<?= $pesanan['nama_mobil'] ?>">
+                        </td>
+                        <td>
+                            <?= $pesanan['tanggal_pemesanan'] ?>
+                        </td>
+                        <td>
+                            <?= $pesanan['tanggal_akhir'] ?>
+                        </td>
+                        <td>
+                            <?= $pesanan['total'] ?>
+                        </td>
+                        <td>
+                            <?= $pesanan['status_pesanan'] ?>
+                        </td>
+                        <td>
+                            <button type=" button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editStatusModal<?= $pesanan['pesanan_id'] ?>">
+                                Edit Status
+                            </button>
+                            <div class="modal fade" id="editStatusModal<?= $pesanan['pesanan_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="judulModal<?= $pesanan['pesanan_id'] ?>" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <form action="<?= BASE_URL; ?>/orders/ubahStatus" method="post">
+                                            <div class="modal-body">
+                                                <h5 style="margin-bottom: 50px; margin-top: 50px;" class="text-center">
+                                                    Apakah anda yakin untuk
+                                                    menyelesaikan proses pesanan
+                                                    <span class="text-italic text-secondary">
+                                                        <?= $pesanan['nama_user'] ?>
+                                                    </span>
+                                                    ini?
+                                                </h5>
+                                                <cite class="text-danger d-flex mt-5" style="font-size: 10px;"><strong>Note
+                                                        :
+                                                    </strong> perhatian jika anda
+                                                    menyetejui pesanan ini
+                                                    maka anda tidak bisa
+                                                    mengubah status pesanan lagi</cite>
+                                                <input type="text" name="pesanan_id" value="<?= $pesanan['pesanan_id'] ?>" hidden>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Ya, Ubah Status
+                                                    Pesanan</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
+
         </table>
     </div>
-    <div class="modal fade" id="editStatusModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="judulModal">Edit Status Pemesanan</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="post">
-                        <div class="form-group my-2">
-                            <label for="pesanan_id">ID Pesanan</label>
-                            <input type="text" class="form-control" id="pesanan_id" name="pesanan_id" disabled value="1">
-                        </div>
-                        <div class="form-group my-2">
-                            <label for="user_id">ID User</label>
-                            <input type="text" class="form-control" id="user_id" name="user_id" disabled value="1">
-                        </div>
-                        <div class="form-group my-2">
-                            <label for="mobil_id">ID Mobil</label>
-                            <input class="form-control" id="mobil_id" rows="5" name="mobil_id" disabled value="1">
-                        </div>
-                        <div class="form-group my-2">
-                            <label for="tanggal_sewa">Tanggal Sewa</label>
-                            <input type="number" class="form-control" id="tanggal_sewa" rows="5" name="tanggal_sewa" disabled value="2023-03-05">
-                        </div>
-                        <div class="form-group my-2">
-                            <label for="tanggal_kembali">Tanggal Kembali</label>
-                            <input type="number" class="form-control" id="tanggal_kembali" rows="5" name="tanggal_kembali" disabled value="2023-03-06">
-                        </div>
-                        <div class="form-group my-2">
-                            <label for="total_harga">Total Harga</label>
-                            <input type="number" class="form-control" id="total_harga" rows="5" name="total_harga" disabled value="500.000">
-                        </div>
-                        <div class="form-group my-2">
-                            <label for="status_pesanan">Status Pesanan</label>
-                            <select name="status_pesanan" id="status_pesanan" class="form-select">
-                                <option value="proses">Proses</option>
-                                <option value="selesai">Selesai</option>
-                            </select>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Ubah Status Pesanan</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
 </body>
 
 </html>
