@@ -10,6 +10,21 @@ class Cars_model
         $this->db = new Database;
     }
 
+    public function getHargaMobil($id)
+    {
+        $query = "SELECT * FROM " . $this->table . " WHERE mobil_id = :id_mobil";
+
+        try {
+            $this->db->query($query);
+            $this->db->bind(':id_mobil', $id);
+            return $this->db->resultSingle();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return -1;
+        }
+
+    }
+
     public function getAllCar()
     {
         $this->db->query("SELECT * FROM " . $this->table);
@@ -33,9 +48,8 @@ class Cars_model
             $this->db->execute();
             return $this->db->rowCount();
         } catch (PDOException $e) {
-            // Handle error here, such as logging or displaying a message
             echo "Error: " . $e->getMessage();
-            return -1; // Return a failure indicator
+            return -1;
         }
     }
 
@@ -62,9 +76,8 @@ class Cars_model
             $this->db->execute();
             return $this->db->rowCount();
         } catch (PDOException $e) {
-            // Handle error here, such as logging or displaying a message
             echo "Error: " . $e->getMessage();
-            return -1; // Return a failure indicator
+            return -1;
         }
     }
 
@@ -77,9 +90,8 @@ class Cars_model
             $this->db->execute();
             return $this->db->rowCount();
         } catch (PDOException $e) {
-            // Handle error here, such as logging or displaying a message
             echo "Error: " . $e->getMessage();
-            return -1; // Return a failure indicator
+            return -1;
         }
     }
 
@@ -91,9 +103,8 @@ class Cars_model
             $this->db->bind(':mobil_id', $id);
             return $this->db->resultSingle();
         } catch (PDOException $e) {
-            // Handle error here, such as logging or displaying a message
             echo "Error: " . $e->getMessage();
-            return -1; // Return a failure indicator
+            return -1;
         }
     }
 
@@ -104,9 +115,8 @@ class Cars_model
             $this->db->query($query);
             return $this->db->resultSingle();
         } catch (PDOException $e) {
-            // Handle error here, such as logging or displaying a message
             echo "Error: " . $e->getMessage();
-            return -1; // Return a failure indicator
+            return -1;
         }
 
     }
@@ -118,11 +128,9 @@ class Cars_model
             $this->db->query($query);
             return $this->db->resultAll();
         } catch (PDOException $e) {
-            // Handle error here, such as logging or displaying a message
             echo "Error: " . $e->getMessage();
-            return -1; // Return a failure indicator
+            return -1;
         }
     }
-
 
 }

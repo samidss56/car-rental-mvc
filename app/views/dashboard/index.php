@@ -63,13 +63,14 @@
     <div class="modal fade" id="sewaModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="judulModal">Form Sewa Mobil</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="post">
+                <form action="<?= BASE_URL; ?>/orders/tambahOrder" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="judulModal">Form Sewa Mobil</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
                         <div class="form-group my-2">
                             <label for="nama_user">Nama Penyewa</label>
                             <input type="text" class="form-control" id="nama_user" name="nama_user">
@@ -89,7 +90,7 @@
                         <hr class="fw-bolder">
                         <div class="form-group my-2">
                             <label for="nama_mobil">Nama Mobil</label>
-                            <select class="form-select" name="nama_mobil" id="nama_mobil">
+                            <select class="form-select" name="id_mobil" id="nama_mobil">
                                 <?php foreach ($data['mobil'] as $mobil): ?>
                                     <option value="  <?php echo $mobil['mobil_id'] ?>">
                                         <?php echo $mobil['nama_mobil'] ?>
@@ -97,31 +98,35 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-
                         <div class="form-group my-2">
-                            <label for="jenis_mobil">Jenis Mobil</label>
-                            <select class="form-select" name="jenis_mobil" id="jenis_mobil">
-                                <option value="MPV">MPV</option>
-                                <option value="Hatchback">Hatchback</option>
-                                <option value="Sedan">Sedan</option>
-                                <option value="SUV">SUV</option>
+                            <label for="tanggal_pemesanan">Tanggal Mulai Sewa</label>
+                            <input type="date" class="form-control" id="tanggal_pemesanan" rows="5"
+                                name="tanggal_pemesanan">
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="tanggal_akhir">Tanggal Akhir Sewa</label>
+                            <input type="date" class="form-control" id="tanggal_akhir" rows="5" name="tanggal_akhir">
+                        </div>
+                        <hr class="fw-bolder">
+                        <div class="form-group my-2">
+                            <label for="tipe_pembayaran">Metode Pembayaran</label>
+                            <select class="form-select" name="tipe_pembayaran" id="tipe_pembayaran">
+                                <?php foreach ($data['metode_pembayaran'] as $metode): ?>
+                                    <option value="  <?php echo $metode['tipe_pembayaran_id'] ?>">
+                                        <?php echo $metode['tipe_pembayaran'] ?> (
+                                        <?php echo $metode['kategori_tipe_pembayaran'] ?> )
+                                    </option>
+                                <?php endforeach; ?>
+
                             </select>
                         </div>
-                        <div class="form-group my-2">
-                            <label for="plat_nomor">Plat Nomor</label>
-                            <input type="text" class="form-control" id="plat_nomor" rows="5" name="plat_nomor">
-                        </div>
-                        <div class="form-group my-2">
-                            <label for="harga_sewa_per_hari">Harga Sewa / Hari</label>
-                            <input type="number" class="form-control" id="harga_sewa_per_hari" rows="5"
-                                name="harga_sewa_per_hari">
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Buat Pesanan</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Buat Pesanan</button>
+                    </div>
                 </form>
+
             </div>
         </div>
     </div>
