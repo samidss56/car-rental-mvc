@@ -13,7 +13,7 @@
                                 <?= number_format($data['transaksi']) ?>
                             </h2>
                             <div class="d-flex align-items-center justify-content-center w-25">
-                                <img src="<?= BASE_URL; ?>/img/cash-coin.svg" alt="">
+                                <i class="bi bi-cash-coin dashboard-stats-icon"></i>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                                 <?= $data['jumlah_mobil'] ?>
                             </h2>
                             <div class="d-flex align-items-center justify-content-center w-25">
-                                <img src="<?= BASE_URL; ?>/img/car-front.svg" alt="">
+                                <i class="bi bi-car-front dashboard-stats-icon"></i>
                             </div>
                         </div>
                     </div>
@@ -37,12 +37,12 @@
                         <div class="d-flex justify-content-between">
                             <h2 class="w-75"><?= $data['jumlah_user'] ?></h2>
                             <div class="d-flex align-items-center justify-content-center w-25">
-                                <img src="<?= BASE_URL; ?>/img/people-fill.svg" alt="">
+                                <i class="bi bi-people-fill dashboard-stats-icon"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card bg-primary" style="width: 18rem;">
+                <div class="card create-order-card" style="width: 18rem;">
                     <div class="card-body d-flex flex-column gap-3">
                         <h5 class="card-title text-white">Buat Pesanan Disini</h5>
                         <button class="btn btn-light fw-bolder" data-bs-toggle="modal" data-bs-target="#sewaModal">Buat

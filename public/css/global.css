@@ -21,6 +21,15 @@ body {
   padding: 40px;
 }
 
+.dashboard-stats-icon {
+  font-size: 38px;
+  color: #357ae8;
+}
+
+.create-order-card {
+  background-color: #357ae8;
+}
+
 .form-control {
   border-radius: 25px;
   border: 2px solid #ced4da;
