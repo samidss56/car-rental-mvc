@@ -1,65 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?= $data['judul']; ?>
-    </title>
-</head>
-
 <body>
-    <div class="container">
-        <h1 class="my-4">
-            <?= $data['judul']; ?>
-        </h1>
-        <div class="card-wrapper d-flex gap-3">
-            <div class="card" style="width: 20rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Jumlah Transaksi</h5>
-                    <div class="d-flex justify-content-between">
-                        <h1 class="w-75">
-                            <?= number_format($data['transaksi']) ?>
-                        </h1>
-                        <div class="d-flex align-items-center justify-content-center w-25">
-                            <img src="<?= BASE_URL; ?>/img/cash-coin.svg" alt="">
+    <div class="col-10">
+        <div class="container">
+            <h2 class="my-4">
+                <?= $data['judul']; ?>
+            </h2>
+            <div class="card-wrapper d-flex gap-3 flex-wrap">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Jumlah Transaksi</h5>
+                        <div class="d-flex justify-content-between">
+                            <h2 class="w-75">
+                                <?= number_format($data['transaksi']) ?>
+                            </h2>
+                            <div class="d-flex align-items-center justify-content-center w-25">
+                                <img src="<?= BASE_URL; ?>/img/cash-coin.svg" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Jumlah Mobil</h5>
-                    <div class="d-flex justify-content-between">
-                        <h1 class="w-75">
-                            <?= $data['jumlah_mobil'] ?>
-                        </h1>
-                        <div class="d-flex align-items-center justify-content-center w-25">
-                            <img src="<?= BASE_URL; ?>/img/car-front.svg" alt="">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Jumlah Mobil</h5>
+                        <div class="d-flex justify-content-between">
+                            <h2 class="w-75">
+                                <?= $data['jumlah_mobil'] ?>
+                            </h2>
+                            <div class="d-flex align-items-center justify-content-center w-25">
+                                <img src="<?= BASE_URL; ?>/img/car-front.svg" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Jumlah Pelanggan</h5>
-                    <div class="d-flex justify-content-between">
-                        <h1 class="w-75"><?= $data['jumlah_user'] ?></h1>
-                        <div class="d-flex align-items-center justify-content-center w-25">
-                            <img src="<?= BASE_URL; ?>/img/people-fill.svg" alt="">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Jumlah Pelanggan</h5>
+                        <div class="d-flex justify-content-between">
+                            <h2 class="w-75"><?= $data['jumlah_user'] ?></h2>
+                            <div class="d-flex align-items-center justify-content-center w-25">
+                                <img src="<?= BASE_URL; ?>/img/people-fill.svg" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card bg-primary" style="width: 18rem;">
-                <div class="card-body d-flex flex-column gap-3">
-                    <h5 class="card-title text-white">Buat Pesanan Disini</h5>
-                    <button class="btn btn-light fw-bolder" data-bs-toggle="modal" data-bs-target="#sewaModal">Buat
-                        Pesanan</button>
+                <div class="card bg-primary" style="width: 18rem;">
+                    <div class="card-body d-flex flex-column gap-3">
+                        <h5 class="card-title text-white">Buat Pesanan Disini</h5>
+                        <button class="btn btn-light fw-bolder" data-bs-toggle="modal" data-bs-target="#sewaModal">Buat
+                            Pesanan</button>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="modal fade" id="sewaModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
